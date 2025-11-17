@@ -1,0 +1,11 @@
+﻿{% extends "base.html" %}
+{% block title %}Order Success — Book Bazaar{% endblock %}
+
+{% block content %}
+<div class="max-w-xl mx-auto text-center p-8 bg-white shadow rounded">
+    <h1 class="text-3xl font-bold text-green-600 mb-4">Payment Successful </h1>
+    <p class="text-xl mb-4">Thank you for your purchase!</p>
+    <p class="text-lg mb-4">Your order <strong>#{{ order.id }}</strong> has been confirmed.</p>
+    <a href="/books/" class="bg-indigo-600 text-white px-4 py-2 rounded">Continue Shopping</a>
+</div>
+{% endblock %}

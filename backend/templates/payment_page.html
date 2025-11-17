@@ -1,0 +1,29 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+  <div class='max-w-2xl mx-auto p-6'>
+    <h2 class='text-2xl font-bold mb-4'>Complete payment</h2>
+
+    <p class="mb-4">Order amount: ₹{{ amount|floatformat:2 }}</p>
+
+    <!-- Razorpay Checkout form (created by view) -->
+    <form id="razorpay-form">
+      <script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        data-key="{{ key_id }}"
+        data-amount="{{ amount }}"
+        data-currency="INR"
+        data-order_id="{{ razor_order_id }}"
+        data-buttontext="Pay now"
+        data-name="Book Bazaar"
+        data-description="Order #{{ order_id }}"
+        data-prefill.name="{{ full_name|default:'' }}"
+        data-prefill.email="{{ email|default:'' }}"
+        data-theme.color="#4F46E5">
+      </script>
+      <!-- If you want a fallback button for non-JS -->
+      <noscript>
+        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded">Proceed to pay</button>
+      </noscript>
+    </form>
+  </div>
+{% endblock %}

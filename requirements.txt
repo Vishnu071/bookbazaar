@@ -1,0 +1,17 @@
+Django>=4.3
+djangorestframework
+mysqlclient
+gunicorn
+celery[redis]
+redis
+django-cors-headers
+python-dotenv
+Pillow
+requests
+whitenoise
+django-filter
+djangorestframework-simplejwt
+razorpay
+scikit-learn
+dj-database-url
+psycopg2-binary

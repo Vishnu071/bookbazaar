@@ -1,0 +1,46 @@
+﻿{% extends 'base.html' %}
+{% block title %}Checkout — Book Bazaar{% endblock %}
+
+{% block content %}
+  <div class='max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6'>
+    <div>
+      <h2 class='text-2xl font-bold mb-4'>Shipping & contact</h2>
+      <form method='post' action='{% url 'orders:create_order' %}' class='space-y-3'>
+        {% csrf_token %}
+        <div>
+          <label class='block text-sm font-medium'>Full name</label>
+          <input name='full_name' class='w-full border rounded px-3 py-2' required />
+        </div>
+
+        <div>
+          <label class='block text-sm font-medium'>Email</label>
+          <input name='email' type='email' class='w-full border rounded px-3 py-2' required />
+        </div>
+
+        <div>
+          <label class='block text-sm font-medium'>Address</label>
+          <textarea name='address' class='w-full border rounded px-3 py-2' rows='4' required></textarea>
+        </div>
+
+        <button class='bg-indigo-600 text-white px-4 py-2 rounded'>Place order</button>
+      </form>
+    </div>
+
+    <aside class='bg-white p-4 rounded card-shadow'>
+      <h3 class='font-semibold mb-3'>Order summary</h3>
+      {% if items %}
+        <ul class='space-y-2'>
+          {% for item in items %}
+            <li class='flex justify-between'>
+              <span>{{ item.title }} x {{ item.quantity }}</span>
+              <span>₹{{ item.subtotal|floatformat:2 }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+        <div class='mt-4 text-right font-bold'>Total: ₹{{ total|floatformat:2 }}</div>
+      {% else %}
+        <p>Your cart is empty.</p>
+      {% endif %}
+    </aside>
+  </div>
+{% endblock %}
