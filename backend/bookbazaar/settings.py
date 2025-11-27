@@ -154,3 +154,6 @@ LOGGING = {
         "level": "INFO",
     },
 }
+
+import os
+import dj_database_url
