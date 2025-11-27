@@ -1,0 +1,60 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.python-version
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+
+# Django
+static_collected/
+media/
+db.sqlite3
+
+# Env & secrets
+.env
+.env.*
+
+# Testing & coverage
+pytest_cache/
+.coverage
+htmlcov/
+
+# Editors/OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node (if not using)
+node_modules/
+*.log
+
+# archives
+*.zip
+*.7z
+*.rar
+backend/.env
+
+# Editor directories and files
+.vscode/
+.idea/
+
+# Node
+node_modules/
+
+# Logs
+*.log
+
+# archives
+*.zip
+*.7z
+*.rar

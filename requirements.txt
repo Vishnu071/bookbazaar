@@ -1,0 +1,13 @@
+Django
+gunicorn
+whitenoise
+python-dotenv
+dj-database-url
+djangorestframework
+django-filter
+django-cors-headers
+pillow
+pymysql
+razorpay
+
+cryptography

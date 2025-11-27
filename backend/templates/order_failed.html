@@ -1,0 +1,11 @@
+﻿{% extends "base.html" %}
+{% block title %}Payment Failed{% endblock %}
+
+{% block content %}
+<div class="max-w-xl mx-auto text-center p-8 bg-white shadow rounded">
+    <h1 class="text-2xl font-bold text-red-600 mb-4">Payment Failed</h1>
+    <p class="mb-4">There was a problem verifying your payment.</p>
+    <p class="text-sm text-gray-600">{{ error_message }}</p>
+    <a href="/books/" class="inline-block mt-6 bg-indigo-600 text-white px-4 py-2 rounded">Back to store</a>
+</div>
+{% endblock %}

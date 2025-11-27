@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.python-version
+
+# Django
+static_collected/
+media/
+db.sqlite3
+
+# Env & secrets
+.env
+.env.*
+
+# Testing & coverage
+pytest_cache/
+.coverage
+htmlcov/
+
+# Editors/OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node (if not using)
+node_modules/
+*.log
+
+# Migrations cache (keep real migrations!)
+# (Do NOT ignore migrations/* entirely; keep real files)

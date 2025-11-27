@@ -1,0 +1,61 @@
+# Example render.yaml for deploying BookBazaar without Docker
+# Adapt the names, plan, region, and environment variables before applying.
+# See: https://render.com/docs/render-manifest
+
+services:
+  - type: web
+    name: bookbazaar-web
+    env: python
+    plan: starter
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --chdir backend bookbazaar.wsgi:application --log-file -
+    envVars:
+      - key: SECRET_KEY
+        scope: env
+      - key: DEBUG
+        value: "false"
+        scope: env
+      - key: ALLOWED_HOSTS
+        scope: env
+      - key: DATABASE_URL
+        scope: env
+      - key: RAZORPAY_KEY_ID
+        scope: env
+      - key: RAZORPAY_KEY_SECRET
+        scope: env
+      - key: REDIS_URL
+        scope: env
+    autoDeploy: true
+
+# Optional managed database example (Render can provision separately)
+# MySQL (recommended for this project since mysqlclient is included):
+databases:
+  - name: bookbazaar-db
+    engine: mysql
+    plan: starter
+    region: oregon
+
+# Example Worker service (Celery) — create a separate Worker on Render and set `REDIS_URL`.
+services:
+  - type: worker
+    name: bookbazaar-worker
+    env: python
+    plan: starter
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: celery -A backend worker -l info
+    envVars:
+      - key: REDIS_URL
+        scope: env
+      - key: DATABASE_URL
+        scope: env
+    autoDeploy: true
+
+# If you prefer Postgres, replace the block above with:
+# databases:
+#   - name: bookbazaar-db
+#     engine: postgresql
+#     plan: starter
+#     region: oregon
+*** End Of File

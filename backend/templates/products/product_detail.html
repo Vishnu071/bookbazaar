@@ -1,0 +1,34 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}{{ book.title }} — Book Bazaar{% endblock %}
+
+{% block content %}
+<div class='max-w-4xl mx-auto bg-white p-6 rounded-lg shadow'>
+  <div class='grid grid-cols-1 md:grid-cols-2 gap-6'>
+
+    <div>
+      {% if book.cover %}
+        <img src='{{ book.cover.url }}' class='w-full rounded shadow'>
+      {% else %}
+        <div class='w-full h-64 bg-gray-200 flex items-center justify-center rounded'>
+          No Image
+        </div>
+      {% endif %}
+    </div>
+
+    <div>
+      <h1 class='text-3xl font-bold mb-2'>{{ book.title }}</h1>
+      <p class='text-gray-600 mb-2'>By {{ book.author }}</p>
+      <p class='text-xl font-semibold mb-4'>₹{{ book.price }}</p>
+
+      <form method='post' action='{% url "product_cart:add_to_cart" %}'>
+        {% csrf_token %}
+        <input type='hidden' name='slug' value='{{ book.slug }}' />
+        <input type='number' name='quantity' value='1' min='1' class='w-20 border rounded px-2 py-1 inline-block mr-2' />
+        <button class='bg-indigo-600 text-white px-4 py-2 rounded'>Add to cart</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
